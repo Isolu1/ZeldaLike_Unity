@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
         _input = ctx.ReadValue<Vector2>();
     }
 
-    void FixedUpdate()
+    void Update()
     {
         _direction = new Vector3(_input.x, 0, _input.y);
 
