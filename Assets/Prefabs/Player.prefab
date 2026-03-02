@@ -122,6 +122,7 @@ GameObject:
   - component: {fileID: 5946726304842542315}
   - component: {fileID: 235063754732847754}
   - component: {fileID: -1078225336772253717}
+  - component: {fileID: -635969349872527633}
   - component: {fileID: 7714697065737894785}
   - component: {fileID: -3062298654312801281}
   m_Layer: 0
@@ -311,6 +312,24 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &-635969349872527633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787303635649207322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5465c2c856e1fa947bb68190a794acc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: {fileID: 7714697065737894785}
+  Attack: {fileID: -3062298654312801281}
+  cc: {fileID: 235063754732847754}
+  PlayerMaxHealth: 10
+  PlayerCurrentHealth: 0
+  IsDead: 0
 --- !u!114 &7714697065737894785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,6 +361,7 @@ MonoBehaviour:
   _thrustDuration: 0.15
   _comboResetTime: 0.5
   _cooldownDuration: 0.1
+  _dashDistance: 5
 --- !u!1 &3318296176345457994
 GameObject:
   m_ObjectHideFlags: 0
