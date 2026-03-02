@@ -339,9 +339,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _swordPivot: {fileID: 3318296176345457994}
   _attackDuration: 0.25
-  _thrustDuration: 0.1
+  _thrustDuration: 0.15
   _comboResetTime: 0.5
-  _nextAttackResetTime: 0.1
+  _cooldownDuration: 0.1
 --- !u!1 &3318296176345457994
 GameObject:
   m_ObjectHideFlags: 0

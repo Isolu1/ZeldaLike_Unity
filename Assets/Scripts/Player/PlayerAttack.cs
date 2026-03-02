@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -14,19 +15,27 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] private GameObject _swordPivot;
 
+    [Header("Attack Settings")]
     [SerializeField] private float _attackDuration = 0.15f;
-    [SerializeField] private float _thrustDuration = 0.1f;
+    [SerializeField] private float _thrustDuration = 0.125f;
     [SerializeField] private float _comboResetTime = 0.5f;
     [SerializeField] private float _cooldownDuration = 0.1f;
+    [SerializeField] private float _dashDistance = 1f;
 
     private SwordAttackMovement _lastAttack = SwordAttackMovement.NONE;
-    private bool _isAttacking;
+    private bool _isAttacking = false;
+    private bool _isDashing = false;
     private float _comboTimer;
     private float _cooldownTimer;
+    private float _dashTimer;
+    private Vector3 _dashVelocity;
+
+    private CharacterController cc;
 
     private void Start()
     {
         _swordPivot.SetActive(false);
+        cc = GetComponent<CharacterController>();
     }
     void Update()
     {
@@ -40,6 +49,11 @@ public class PlayerAttack : MonoBehaviour
             _comboTimer -= Time.deltaTime;
             if (_comboTimer <= 0)
                 _lastAttack = SwordAttackMovement.NONE;
+        }
+
+        if (_isDashing)
+        {
+            DashMovement();
         }
     }
 
@@ -59,6 +73,10 @@ public class PlayerAttack : MonoBehaviour
                 nextAttack = (SwordAttackMovement)((int)_lastAttack + 1);
             }
 
+            if (nextAttack == SwordAttackMovement.THRUST)
+            {
+                StartDash();
+            }
             StartCoroutine(AttackRoutine(nextAttack));
         }
     }
@@ -73,8 +91,10 @@ public class PlayerAttack : MonoBehaviour
 
         Quaternion startRot = Quaternion.identity;
         Quaternion endRot = Quaternion.identity;
+
+        // THRUST
         Vector3 startPos = new Vector3(0, 0, -0.5f);
-        Vector3 endPos = new Vector3(0, 0, 0.5f);
+        Vector3 endPos = new Vector3(0, 0, 0.75f);
 
         // movement rotations
         if (attackMovement == SwordAttackMovement.FOREHAND)
@@ -115,5 +135,28 @@ public class PlayerAttack : MonoBehaviour
         _comboTimer = _comboResetTime;
         _cooldownTimer = _cooldownDuration;
         _isAttacking = false;
+    }
+
+    private void StartDash()
+    {
+        _isDashing = true;
+        float dashDuration = _thrustDuration;
+        Vector3 dashDirection = transform.forward;
+        _dashVelocity = dashDirection.normalized * (_dashDistance / dashDuration);
+        _dashTimer = dashDuration;
+    }
+
+    private void DashMovement()
+    {
+        if (_dashTimer > 0)
+        {
+            cc.Move(_dashVelocity * Time.deltaTime);
+
+            _dashTimer -= Time.deltaTime;
+        }
+        else
+        {
+            _isDashing = false;
+        }
     }
 }
