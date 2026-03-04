@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc64473ba0871eb4da2806ae77368289, type: 3}
+  m_Name: BasicSword
+  m_EditorClassIdentifier: 
+  baseName: Basic Sword
+  description: Basic
+  levels:
+  - levelName: Lvl 1
+    attacks:
+    - type: ForeHand
+      damage: 2
+      attackSpeed: 0.15
+    - type: BackHand
+      damage: 2
+      attackSpeed: 0.15
+    - type: Thrust
+      damage: 3
+      attackSpeed: 0.125
+    - type: Charged
+      damage: 3
+      attackSpeed: 0.2
+  - levelName: Lvl 2
+    attacks:
+    - type: ForeHand
+      damage: 3
+      attackSpeed: 0.15
+    - type: BackHand
+      damage: 3
+      attackSpeed: 0.15
+    - type: Thrust
+      damage: 4
+      attackSpeed: 0.125
+    - type: Charged
+      damage: 4
+      attackSpeed: 0.2
+  - levelName: Lvl 3
+    attacks:
+    - type: ForeHand
+      damage: 5
+      attackSpeed: 0.15
+    - type: BackHand
+      damage: 6
+      attackSpeed: 0.15
+    - type: Thrust
+      damage: 7
+      attackSpeed: 0.125
+    - type: Charged
+      damage: 7
+      attackSpeed: 0.2

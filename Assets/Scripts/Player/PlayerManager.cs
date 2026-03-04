@@ -6,7 +6,7 @@ public class PlayerManager : MonoBehaviour
 
     [Header("Components")]
     public PlayerMovement movement;
-    public PlayerAttack Attack;
+    public PlayerAttack attack;
     public CharacterController cc;
 
     [Header("Stats")]
@@ -19,6 +19,11 @@ public class PlayerManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+
+        if (movement == null) movement = GetComponent<PlayerMovement>();
+        if (attack == null) attack = GetComponent<PlayerAttack>();
+        if (cc == null) cc = GetComponent<CharacterController>();
+
         PlayerCurrentHealth = PlayerMaxHealth;
     }
 
@@ -39,7 +44,7 @@ public class PlayerManager : MonoBehaviour
     {
         IsDead = true;
         movement.enabled = false;
-        Attack.enabled = false;
+        attack.enabled = false;
         Debug.Log("Game Over");
     }
 }

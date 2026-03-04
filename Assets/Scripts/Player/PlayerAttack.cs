@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerAttack : MonoBehaviour
 {
+
     private enum SwordAttackMovement
     {
         NONE,
@@ -54,6 +55,11 @@ public class PlayerAttack : MonoBehaviour
         if (_isDashing)
         {
             DashMovement();
+        }
+
+        if (_isAttacking)
+        {
+            PlayerManager.Instance.movement.enabled = false;
         }
     }
 
@@ -135,6 +141,8 @@ public class PlayerAttack : MonoBehaviour
         _comboTimer = _comboResetTime;
         _cooldownTimer = _cooldownDuration;
         _isAttacking = false;
+
+        PlayerManager.Instance.movement.enabled = true;
     }
 
     private void StartDash()
