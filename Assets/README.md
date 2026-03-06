@@ -5,7 +5,7 @@ A top-down **Zelda-like** adventure game built with **Unity 6** using the **New 
 ---
 
 ## ⏱️ Development Time
-> **Total Time Logged:** `9h10min`
+> **Total Time Logged:** `12h45min`
 *Tracked since the first commit to monitor the project's evolution.*
 
 ---
